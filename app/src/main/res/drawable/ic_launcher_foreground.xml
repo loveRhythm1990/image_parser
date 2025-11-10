@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <group
+        android:scaleX="0.3"
+        android:scaleY="0.3"
+        android:translateX="37.8"
+        android:translateY="37.8">
+        <!-- 手机屏幕 -->
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M68,8H20C14.4,8 10,12.4 10,18V86C10,91.6 14.4,96 20,96H68C73.6,96 78,91.6 78,86V18C78,12.4 73.6,8 68,8ZM68,78H20V26H68V78Z"/>
+        <!-- 截屏内容线条 -->
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M30,36H58V46H30V36Z"/>
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M30,52H58V62H30V52Z"/>
+        <!-- 相机圆形（使用 path 绘制圆形） -->
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M44,32C37.4,32 32,37.4 32,44C32,50.6 37.4,56 44,56C50.6,56 56,50.6 56,44C56,37.4 50.6,32 44,32Z"/>
+    </group>
+</vector>
+

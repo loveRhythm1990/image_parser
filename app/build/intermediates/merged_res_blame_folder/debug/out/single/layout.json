@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/Users/lr90/.gradle/daemon/8.5/com.example.floatingscreenshot.app-mergeDebugResources-31:/layout/activity_main.xml",
+        "source": "/Users/lr90/.gradle/daemon/8.5/com.example.floatingscreenshot.app-main-34:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.example.floatingscreenshot.app-mergeDebugResources-31:/layout/floating_window.xml",
+        "source": "com.example.floatingscreenshot.app-main-34:/layout/floating_window.xml"
+    },
+    {
+        "merged": "com.example.floatingscreenshot.app-mergeDebugResources-31:/layout/activity_main.xml",
+        "source": "com.example.floatingscreenshot.app-main-34:/layout/activity_main.xml"
+    },
+    {
+        "merged": "/Users/lr90/.gradle/daemon/8.5/com.example.floatingscreenshot.app-mergeDebugResources-31:/layout/floating_window.xml",
+        "source": "/Users/lr90/.gradle/daemon/8.5/com.example.floatingscreenshot.app-main-34:/layout/floating_window.xml"
+    }
+]

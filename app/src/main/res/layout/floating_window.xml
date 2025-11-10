@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <!-- 悬浮按钮 - 简化版本 -->
+    <ImageView
+        android:id="@+id/screenshotButton"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:src="@drawable/ic_screenshot_white"
+        android:padding="12dp"
+        android:background="@drawable/floating_button_background"
+        android:scaleType="fitCenter"
+        android:contentDescription="截屏按钮"
+        android:clickable="true"
+        android:focusable="true" />
+
+</FrameLayout>
+

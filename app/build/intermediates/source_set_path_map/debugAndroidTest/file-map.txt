@@ -1,0 +1,4 @@
+com.example.floatingscreenshot.test.app-androidTest-0 /Users/lr90/andro/app/build/generated/res/resValues/androidTest/debug
+com.example.floatingscreenshot.test.app-mergeDebugAndroidTestResources-1 /Users/lr90/andro/app/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/merged.dir
+com.example.floatingscreenshot.test.app-mergeDebugAndroidTestResources-2 /Users/lr90/andro/app/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/stripped.dir
+com.example.floatingscreenshot.test.app-merged_res-3 /Users/lr90/andro/app/build/intermediates/merged_res/debugAndroidTest
