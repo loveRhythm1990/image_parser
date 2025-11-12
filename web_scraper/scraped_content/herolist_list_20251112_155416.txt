@@ -1,0 +1,111 @@
+爬取时间: 2025-11-12 15:54:16
+来源URL: https://pvp.qq.com/web201605/herolist.shtml
+================================================================================
+
+【页面标题】
+英雄资料列表页-英雄介绍-王者荣耀官方网站-腾讯游戏
+
+
+【H1 标题】
+  英雄介绍
+
+
+【英雄列表】
+  云中君 -> https://pvp.qq.com/web201605/herodetail/506.shtml
+  瑶 -> https://pvp.qq.com/web201605/herodetail/505.shtml
+  盘古 -> https://pvp.qq.com/web201605/herodetail/529.shtml
+  猪八戒 -> https://pvp.qq.com/web201605/herodetail/511.shtml
+  嫦娥 -> https://pvp.qq.com/web201605/herodetail/515.shtml
+  上官婉儿 -> https://pvp.qq.com/web201605/herodetail/513.shtml
+  李信 -> https://pvp.qq.com/web201605/herodetail/507.shtml
+  沈梦溪 -> https://pvp.qq.com/web201605/herodetail/312.shtml
+  伽罗 -> https://pvp.qq.com/web201605/herodetail/508.shtml
+  盾山 -> https://pvp.qq.com/web201605/herodetail/509.shtml
+  司马懿 -> https://pvp.qq.com/web201605/herodetail/137.shtml
+  孙策 -> https://pvp.qq.com/web201605/herodetail/510.shtml
+  元歌 -> https://pvp.qq.com/web201605/herodetail/125.shtml
+  米莱狄 -> https://pvp.qq.com/web201605/herodetail/504.shtml
+  狂铁 -> https://pvp.qq.com/web201605/herodetail/503.shtml
+  弈星 -> https://pvp.qq.com/web201605/herodetail/197.shtml
+  裴擒虎 -> https://pvp.qq.com/web201605/herodetail/502.shtml
+  杨玉环 -> https://pvp.qq.com/web201605/herodetail/176.shtml
+  公孙离 -> https://pvp.qq.com/web201605/herodetail/199.shtml
+  明世隐 -> https://pvp.qq.com/web201605/herodetail/501.shtml
+  女娲 -> https://pvp.qq.com/web201605/herodetail/179.shtml
+  梦奇 -> https://pvp.qq.com/web201605/herodetail/198.shtml
+  苏烈 -> https://pvp.qq.com/web201605/herodetail/194.shtml
+  百里玄策 -> https://pvp.qq.com/web201605/herodetail/195.shtml
+  百里守约 -> https://pvp.qq.com/web201605/herodetail/196.shtml
+  铠 -> https://pvp.qq.com/web201605/herodetail/193.shtml
+  鬼谷子 -> https://pvp.qq.com/web201605/herodetail/189.shtml
+  干将莫邪 -> https://pvp.qq.com/web201605/herodetail/182.shtml
+  东皇太一 -> https://pvp.qq.com/web201605/herodetail/187.shtml
+  大乔 -> https://pvp.qq.com/web201605/herodetail/191.shtml
+  黄忠 -> https://pvp.qq.com/web201605/herodetail/192.shtml
+  诸葛亮 -> https://pvp.qq.com/web201605/herodetail/190.shtml
+  哪吒 -> https://pvp.qq.com/web201605/herodetail/180.shtml
+  太乙真人 -> https://pvp.qq.com/web201605/herodetail/186.shtml
+  蔡文姬 -> https://pvp.qq.com/web201605/herodetail/184.shtml
+  雅典娜 -> https://pvp.qq.com/web201605/herodetail/183.shtml
+  杨戬 -> https://pvp.qq.com/web201605/herodetail/178.shtml
+  成吉思汗 -> https://pvp.qq.com/web201605/herodetail/177.shtml
+  钟馗 -> https://pvp.qq.com/web201605/herodetail/175.shtml
+  虞姬 -> https://pvp.qq.com/web201605/herodetail/174.shtml
+  李元芳 -> https://pvp.qq.com/web201605/herodetail/173.shtml
+  张飞 -> https://pvp.qq.com/web201605/herodetail/171.shtml
+  刘备 -> https://pvp.qq.com/web201605/herodetail/170.shtml
+  后羿 -> https://pvp.qq.com/web201605/herodetail/169.shtml
+  牛魔 -> https://pvp.qq.com/web201605/herodetail/168.shtml
+  孙悟空 -> https://pvp.qq.com/web201605/herodetail/167.shtml
+  亚瑟 -> https://pvp.qq.com/web201605/herodetail/166.shtml
+  橘右京 -> https://pvp.qq.com/web201605/herodetail/163.shtml
+  娜可露露 -> https://pvp.qq.com/web201605/herodetail/162.shtml
+  不知火舞 -> https://pvp.qq.com/web201605/herodetail/157.shtml
+  张良 -> https://pvp.qq.com/web201605/herodetail/156.shtml
+  花木兰 -> https://pvp.qq.com/web201605/herodetail/154.shtml
+  兰陵王 -> https://pvp.qq.com/web201605/herodetail/153.shtml
+  王昭君 -> https://pvp.qq.com/web201605/herodetail/152.shtml
+  韩信 -> https://pvp.qq.com/web201605/herodetail/150.shtml
+  刘邦 -> https://pvp.qq.com/web201605/herodetail/149.shtml
+  姜子牙 -> https://pvp.qq.com/web201605/herodetail/148.shtml
+  露娜 -> https://pvp.qq.com/web201605/herodetail/146.shtml
+  程咬金 -> https://pvp.qq.com/web201605/herodetail/144.shtml
+  安琪拉 -> https://pvp.qq.com/web201605/herodetail/142.shtml
+  貂蝉 -> https://pvp.qq.com/web201605/herodetail/141.shtml
+  关羽 -> https://pvp.qq.com/web201605/herodetail/140.shtml
+  老夫子 -> https://pvp.qq.com/web201605/herodetail/139.shtml
+  武则天 -> https://pvp.qq.com/web201605/herodetail/136.shtml
+  项羽 -> https://pvp.qq.com/web201605/herodetail/135.shtml
+  达摩 -> https://pvp.qq.com/web201605/herodetail/134.shtml
+  狄仁杰 -> https://pvp.qq.com/web201605/herodetail/133.shtml
+  马可波罗 -> https://pvp.qq.com/web201605/herodetail/132.shtml
+  李白 -> https://pvp.qq.com/web201605/herodetail/131.shtml
+  宫本武藏 -> https://pvp.qq.com/web201605/herodetail/130.shtml
+  典韦 -> https://pvp.qq.com/web201605/herodetail/129.shtml
+  曹操 -> https://pvp.qq.com/web201605/herodetail/128.shtml
+  甄姬 -> https://pvp.qq.com/web201605/herodetail/127.shtml
+  夏侯惇 -> https://pvp.qq.com/web201605/herodetail/126.shtml
+  周瑜 -> https://pvp.qq.com/web201605/herodetail/124.shtml
+  吕布 -> https://pvp.qq.com/web201605/herodetail/123.shtml
+  芈月 -> https://pvp.qq.com/web201605/herodetail/121.shtml
+  白起 -> https://pvp.qq.com/web201605/herodetail/120.shtml
+  扁鹊 -> https://pvp.qq.com/web201605/herodetail/119.shtml
+  孙膑 -> https://pvp.qq.com/web201605/herodetail/118.shtml
+  钟无艳 -> https://pvp.qq.com/web201605/herodetail/117.shtml
+  阿轲 -> https://pvp.qq.com/web201605/herodetail/116.shtml
+  高渐离 -> https://pvp.qq.com/web201605/herodetail/115.shtml
+  刘禅 -> https://pvp.qq.com/web201605/herodetail/114.shtml
+  庄周 -> https://pvp.qq.com/web201605/herodetail/113.shtml
+  鲁班七号 -> https://pvp.qq.com/web201605/herodetail/112.shtml
+  孙尚香 -> https://pvp.qq.com/web201605/herodetail/111.shtml
+  嬴政 -> https://pvp.qq.com/web201605/herodetail/110.shtml
+  妲己 -> https://pvp.qq.com/web201605/herodetail/109.shtml
+  墨子 -> https://pvp.qq.com/web201605/herodetail/108.shtml
+  赵云 -> https://pvp.qq.com/web201605/herodetail/107.shtml
+  小乔 -> https://pvp.qq.com/web201605/herodetail/106.shtml
+  廉颇 -> https://pvp.qq.com/web201605/herodetail/105.shtml
+
+
+【页面内容】
+  英雄资料列表页-英雄介绍-王者荣耀官方网站-腾讯游戏
+  输入英雄不存在，请重新输入
