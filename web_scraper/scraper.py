@@ -684,11 +684,20 @@ class HeroScraper:
 def main():
     """主函数"""
     import sys
+    import argparse
+    
+    # 创建命令行参数解析器
+    parser = argparse.ArgumentParser(description='王者荣耀英雄信息爬虫')
+    parser.add_argument('--url', type=str, help='要爬取的URL')
+    parser.add_argument('--type', type=str, choices=['detail', 'list'], help='页面类型：detail或list')
+    parser.add_argument('--all-heroes', action='store_true', help='批量爬取所有英雄详情')
+    
+    args = parser.parse_args()
     
     scraper = HeroScraper()
     
     # 检查命令行参数
-    if len(sys.argv) > 1 and sys.argv[1] == '--all-heroes':
+    if args.all_heroes:
         # 批量爬取所有英雄详情
         print("=" * 80)
         print("开始批量爬取所有英雄详情...")
@@ -715,6 +724,16 @@ def main():
             })
         
         # 批量爬取
+        scraper.scrape_urls(urls)
+        
+    elif args.url and args.type:
+        # 爬取指定的单个URL
+        urls = [
+            {
+                'url': args.url,
+                'type': args.type
+            }
+        ]
         scraper.scrape_urls(urls)
         
     else:
