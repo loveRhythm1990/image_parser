@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "web-scraper"
+version = "0.1.0"
+description = "王者荣耀英雄信息爬虫"
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.8"
+requests = "^2.31.0"
+beautifulsoup4 = "^4.12.0"
+chardet = "^5.2.0"
+
+[tool.poetry.group.dev.dependencies]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
