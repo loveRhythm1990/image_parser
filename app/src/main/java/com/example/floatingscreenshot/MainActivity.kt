@@ -1,6 +1,8 @@
 package com.example.floatingscreenshot
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -8,14 +10,29 @@ import android.provider.Settings
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var statusText: TextView
     private lateinit var startButton: Button
     private lateinit var stopButton: Button
+
+    private val storagePermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestMultiplePermissions()
+    ) { permissions ->
+        val granted = permissions.values.all { it }
+        if (granted) {
+            android.util.Log.d("MainActivity", "读取媒体权限已授予")
+            startFloatingWindow()
+        } else {
+            android.util.Log.w("MainActivity", "读取媒体权限被拒绝")
+            Toast.makeText(this, "需要读取媒体权限才能监听系统截图", Toast.LENGTH_LONG).show()
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,6 +84,13 @@ class MainActivity : AppCompatActivity() {
         }
 
         android.util.Log.d("MainActivity", "已有悬浮窗权限，启动服务")
+        // 检查读取媒体权限
+        if (!hasStoragePermission()) {
+            android.util.Log.d("MainActivity", "缺少读取媒体权限，准备请求")
+            requestStoragePermissions()
+            return
+        }
+
         // 启动悬浮窗服务
         startFloatingWindow()
     }
@@ -113,6 +137,30 @@ class MainActivity : AppCompatActivity() {
         }
         // 按钮始终可点击
         startButton.isEnabled = true
+    }
+
+    private fun hasStoragePermission(): Boolean {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.READ_MEDIA_IMAGES
+            ) == PackageManager.PERMISSION_GRANTED
+        } else {
+            ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            ) == PackageManager.PERMISSION_GRANTED
+        }
+    }
+
+    private fun requestStoragePermissions() {
+        val permissions = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            arrayOf(Manifest.permission.READ_MEDIA_IMAGES)
+        } else {
+            arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE)
+        }
+
+        storagePermissionLauncher.launch(permissions)
     }
 }
 

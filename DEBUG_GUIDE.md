@@ -1,306 +1,185 @@
-# 🐛 应用调试指南
+# 英雄识别功能调试指南
 
-## 📱 问题 1：查看崩溃日志
+## 问题：截屏后英雄名字没有更新
 
-### 方法 1：在 Android Studio 中查看 Logcat（推荐）
+如果你截屏后等了2分钟，英雄1-5的按钮还没有被替换为英雄名字，请按以下步骤排查：
 
-1. **打开 Logcat 窗口**
-   - 在 Android Studio 底部点击 **`Logcat`** 标签
-   - 或使用快捷键：`Cmd + 6` (Mac) / `Alt + 6` (Windows)
+## 步骤1：查看 Logcat 日志
 
-2. **过滤日志**
-   - 在搜索框中输入：`FloatingWindow`
-   - 或输入：`AndroidRuntime` 查看崩溃信息
+在 Android Studio 中打开 Logcat，过滤关键字查看日志：
 
-3. **运行应用并观察日志**
-   - 启动应用
-   - 点击"授权并启动"按钮
-   - 查看 Logcat 中的输出
+### 1.1 检查截图是否被检测到
+过滤关键字：`ScreenshotObserver` 或 `FloatingWindow`
 
-**关键日志信息：**
+**期望看到的日志：**
 ```
-D/FloatingWindow: Service onCreate 被调用
-D/FloatingWindow: Service onStartCommand 被调用
-D/FloatingWindow: 悬浮窗已添加到屏幕
+ScreenshotObserver: 检测到媒体库更新: id=xxx, name=Screenshot_xxx.png, bucket=Screenshots...
+ScreenshotObserver: 已将截图复制到缓存: /data/user/0/.../cache/Screenshot_xxx.png
+FloatingWindow: 检测到系统截图: /path/to/screenshot.png
+FloatingWindow: ========== 开始上传截图进行识别 ==========
+FloatingWindow: 截图路径: /path/to/screenshot.png
+FloatingWindow: 文件是否存在: true
+FloatingWindow: 文件大小: xxxxx bytes
 ```
 
-如果看到这些日志，说明服务正常启动。
+**如果没有看到这些日志：**
+- 问题：截图没有被检测到
+- 解决：检查是否授予了存储权限（READ_MEDIA_IMAGES 或 READ_EXTERNAL_STORAGE）
 
-如果看到错误日志：
+### 1.2 检查网络请求是否发送
+过滤关键字：`HeroRecognitionService`
+
+**期望看到的日志：**
 ```
-E/FloatingWindow: 创建悬浮窗失败: xxx
-E/AndroidRuntime: FATAL EXCEPTION: xxx
+HeroRecognitionService: 开始识别英雄，图片路径: xxx
+HeroRecognitionService: 收到服务器响应，状态码: 200
+HeroRecognitionService: 服务器响应内容: {"heroes":["xxx","yyy",...]}
 ```
 
----
+**如果看到网络请求失败：**
+- `网络请求失败: Unable to resolve host`: DNS 解析失败，检查网络连接
+- `网络请求失败: timeout`: 超时（不应该发生，我们设置了无超时）
+- `服务器返回错误: 4xx/5xx`: 服务器问题
 
-### 方法 2：使用终端命令（备选）
+### 1.3 检查识别结果
+过滤关键字：`FloatingWindow`
 
-如果 Android Studio 的 Logcat 不工作，可以在终端中运行：
+**期望看到的日志：**
+```
+FloatingWindow: 识别成功: [英雄1, 英雄2, 英雄3, 英雄4, 英雄5]
+FloatingWindow: 更新后的英雄列表: [英雄1, 英雄2, 英雄3, 英雄4, 英雄5]
+FloatingWindow: 更新英雄名字 1: 英雄1
+FloatingWindow: 更新英雄名字 2: 英雄2
+...
+```
 
+## 步骤2：检查权限
+
+### 2.1 网络权限
+打开 `设置 > 应用 > 悬浮截屏 > 权限`，确保：
+- ✅ 网络访问已允许（这个通常是默认允许的）
+
+### 2.2 存储权限
+- Android 13+: 需要 `照片和视频` 权限
+- Android 6-12: 需要 `存储` 权限
+- Android 5-: 自动授予
+
+### 2.3 检查权限授予情况
+在 Logcat 中查看：
+```
+FloatingWindow: 缺少读取媒体权限，无法监听系统截图
+```
+
+如果看到这条日志，说明权限未授予。
+
+## 步骤3：手动测试网络请求
+
+### 3.1 在电脑上测试服务器
 ```bash
-# Mac/Linux 系统（假设 adb 已配置到 PATH）
-adb logcat | grep -E "FloatingWindow|AndroidRuntime"
-
-# 如果 adb 不在 PATH 中，使用完整路径
-~/Library/Android/sdk/platform-tools/adb logcat | grep -E "FloatingWindow|AndroidRuntime"
-
-# 清除日志并重新开始
-~/Library/Android/sdk/platform-tools/adb logcat -c
-~/Library/Android/sdk/platform-tools/adb logcat | grep -E "FloatingWindow|AndroidRuntime"
+curl -X POST http://shanghai.idc.matrixorigin.cn:30026/api/v1/recognize-heroes \
+  -F "file=@/path/to/screenshot.png"
 ```
 
----
-
-### 方法 3：保存完整日志到文件
-
-```bash
-# 保存日志到文件
-~/Library/Android/sdk/platform-tools/adb logcat > ~/Desktop/app_log.txt
-
-# 等待应用崩溃后，按 Ctrl+C 停止
-# 然后打开 ~/Desktop/app_log.txt 查看
+**期望响应：**
+```json
+{"heroes":["英雄1","英雄2","英雄3","英雄4","英雄5"],"success":true,"message":"成功识别 5 个英雄"}
 ```
 
----
+### 3.2 检查手机网络
+- 手机是否连接到互联网？
+- 手机能否访问外网？
+- 是否在公司/学校内网（可能有防火墙）？
 
-## 🔘 问题 2：为什么看不到悬浮按钮？
+## 步骤4：常见问题
 
-### 可能的原因和解决方案：
+### 问题1：看到 Toast "正在识别英雄..." 但没有后续
+**原因：** 网络请求卡住或超时
+**解决：** 查看 Logcat，应该能看到具体错误
 
-#### 原因 1：没有授予悬浮窗权限 ✅
+### 问题2：看到 Toast "识别失败: xxx"
+**原因：** 服务器返回错误或解析失败
+**解决：** 查看具体错误信息
 
-**解决方案：**
+### 问题3：没有任何 Toast 提示
+**原因1：** 截图没有被检测到
+- 解决：检查存储权限
+- 解决：确认截图保存在 `/DCIM/Screenshots/` 或类似目录
 
-1. 打开模拟器的 **Settings（设置）**
-2. 进入 **Apps → 悬浮截屏**
-3. 找到 **Display over other apps**（在其他应用上层显示）
-4. 打开这个开关
+**原因2：** 回调没有被触发
+- 解决：查看 Logcat 中 `ScreenshotObserver` 的日志
 
-或者在应用中：
-- 点击"授权并启动"按钮
-- 点击"前往设置"
-- 开启权限后返回
-
----
-
-#### 原因 2：服务没有正常启动 ❌
-
-**检查方法：**
-
-在 Logcat 中查找：
+### 问题4：识别成功但英雄名字没更新
+**原因：** UI 更新失败
+**在 Logcat 中查找：**
 ```
-D/FloatingWindow: Service onCreate 被调用
-D/FloatingWindow: Service onStartCommand 被调用
+FloatingWindow: 更新英雄名字 1: xxx
 ```
 
-如果没有这些日志，说明服务没启动。
+如果看到了这条日志，说明代码执行了，但 UI 可能没有刷新。
 
-**解决方案：**
-- 确保点击了"启动悬浮窗"按钮
-- 检查是否有权限拒绝的错误
+## 步骤5：清理缓存并重试
 
----
+1. 停止 app
+2. 在 `设置 > 应用 > 悬浮截屏` 中：
+   - 清除缓存
+   - 清除数据
+3. 卸载并重新安装 app
+4. 重新授予所有权限
+5. 重新测试
 
-#### 原因 3：布局文件问题 ❌
+## 步骤6：收集日志信息
 
-**检查方法：**
+如果以上步骤都无法解决，请收集以下信息：
 
-查看是否有类似错误：
-```
-E/FloatingWindow: 创建悬浮窗失败: xxx
-```
+1. **Logcat 完整日志**（从截图开始到等待2分钟后）
+   - 过滤：`tag:FloatingWindow OR tag:ScreenshotObserver OR tag:HeroRecognitionService`
 
-**解决方案：**
-- 查看详细错误信息
-- 检查布局文件 `floating_window.xml` 是否正确
-
----
-
-#### 原因 4：悬浮按钮太小或透明度太高 ❌
-
-**解决方案：**
-- 检查悬浮按钮的大小（应该是 64x64 dp）
-- 检查透明度设置（alpha 应该是 0.8，不要太透明）
-
----
-
-## 📸 问题 3：点击悬浮按钮后截屏功能
-
-### 预期行为：
-
-1. **点击悬浮按钮**
-   - 应该看到 Toast 提示："准备截屏..."
-   - Logcat 显示：`D/FloatingWindow: 悬浮按钮被点击`
-
-2. **首次点击**
-   - 会弹出系统权限对话框
-   - 内容："开始投射屏幕"
-   - 点击"立即开始"授权
-
-3. **授权后**
-   - 自动截屏
-   - 显示 Toast："截屏已保存: /path/to/file"
-
-4. **后续点击**
-   - 直接截屏，不再需要授权
-
----
-
-### 如果没有反应：
-
-**检查 Logcat：**
-```
-# 点击按钮后应该看到：
-D/FloatingWindow: 悬浮按钮被点击
-
-# 如果没有这条日志，说明点击事件没有触发
-```
-
-**可能的原因：**
-1. 按钮太小，点击区域不准确
-2. Touch 事件被拖动逻辑拦截了
-
----
-
-## 🎯 完整测试流程
-
-### 步骤 1：重新构建并安装
-
-```bash
-# 在 Android Studio 中
-Build > Clean Project
-Build > Build APK(s)
-
-# 卸载旧版本
-adb uninstall com.example.floatingscreenshot
-
-# 安装新版本
-# 将 APK 拖入模拟器
-```
-
-### 步骤 2：打开 Logcat
-
-在 Android Studio 底部点击 **Logcat** 标签
-
-### 步骤 3：启动应用并观察
-
-1. **打开应用**
-   ```
-   期待日志：应用启动
-   ```
-
-2. **点击"授权并启动"**
-   ```
-   期待日志：
-   D/FloatingWindow: Service onCreate 被调用
-   D/FloatingWindow: Service onStartCommand 被调用
-   ```
-
-3. **如果弹出授权对话框，点击"前往设置"并授权**
-   ```
-   期待日志：无
-   ```
-
-4. **返回应用，再次点击"启动悬浮窗"**
-   ```
-   期待日志：
-   D/FloatingWindow: 悬浮窗已添加到屏幕
-   期待 Toast："悬浮按钮已显示"
-   ```
-
-5. **在屏幕上寻找悬浮按钮**
-   ```
-   位置：屏幕左上角偏右一点（x=100, y=100）
-   外观：半透明圆形按钮，内有图标
-   ```
-
-6. **点击悬浮按钮**
-   ```
-   期待日志：
-   D/FloatingWindow: 悬浮按钮被点击
-   期待 Toast："准备截屏..."
-   ```
-
-7. **首次会弹出截屏权限对话框**
-   ```
-   点击"立即开始"
-   ```
-
-8. **截屏成功**
-   ```
-   期待 Toast："截屏已保存: /path/to/file"
-   ```
-
----
-
-## ❌ 常见错误及解决方案
-
-### 错误 1：Permission Denial
-```
-java.lang.SecurityException: Permission Denial: 
-requires android.permission.SYSTEM_ALERT_WINDOW
-```
-
-**解决方案：**
-- 手动授予悬浮窗权限
-- 设置 > 应用 > 悬浮截屏 > Display over other apps > 开启
-
----
-
-### 错误 2：View not attached to window manager
-```
-java.lang.IllegalArgumentException: 
-View not attached to window manager
-```
-
-**解决方案：**
-- 这是停止服务时的错误
-- 已在代码中添加了 try-catch 处理
-
----
-
-### 错误 3：Service not registered
-```
-java.lang.IllegalArgumentException: 
-Service not registered
-```
-
-**解决方案：**
-- 检查 AndroidManifest.xml 中是否正确声明了 Service
-
----
-
-## 📞 如何报告问题
-
-如果问题仍然存在，请提供以下信息：
-
-1. **Logcat 日志**
-   - 从启动应用到崩溃的完整日志
-   - 特别是包含 "FloatingWindow" 或 "AndroidRuntime" 的行
-
-2. **操作步骤**
-   - 您具体点击了什么
-   - 看到了什么现象
-   - 预期应该是什么
-
-3. **系统信息**
+2. **手机信息**
    - Android 版本
-   - 是真机还是模拟器
+   - 手机品牌和型号
+   
+3. **网络状态**
+   - WiFi 还是移动网络
+   - 能否访问外网
 
----
+4. **截图信息**
+   - 截图文件大小
+   - 截图保存位置
+   - 是否是游戏开局加载界面
 
-## ✅ 成功的标志
+## 快速诊断命令
 
-如果一切正常，您应该看到：
+### 在 Android Studio Terminal 中运行：
 
-1. ✅ 应用可以打开，没有崩溃
-2. ✅ 点击"授权并启动"后能看到 Toast："悬浮按钮已显示"
-3. ✅ 屏幕上出现半透明圆形悬浮按钮
-4. ✅ 可以拖动悬浮按钮改变位置
-5. ✅ 点击悬浮按钮能看到 Toast："准备截屏..."
-6. ✅ 首次点击会请求截屏权限
-7. ✅ 授权后能成功截屏并保存
+```bash
+# 清除之前的日志
+adb logcat -c
 
-祝调试顺利！🎉
+# 实时查看日志（过滤关键字）
+adb logcat | grep -E "(FloatingWindow|ScreenshotObserver|HeroRecognitionService)"
+```
 
+然后进行截图操作，观察日志输出。
+
+## 预期的完整日志流程
+
+```
+ScreenshotObserver: 检测到媒体库更新...
+ScreenshotObserver: 已将截图复制到缓存: xxx
+FloatingWindow: 检测到系统截图: xxx
+FloatingWindow: ========== 开始上传截图进行识别 ==========
+FloatingWindow: 截图路径: xxx
+FloatingWindow: 文件是否存在: true
+FloatingWindow: 文件大小: xxx bytes
+HeroRecognitionService: 开始识别英雄，图片路径: xxx
+HeroRecognitionService: 收到服务器响应，状态码: 200
+HeroRecognitionService: 服务器响应内容: {"heroes":[...]}
+FloatingWindow: 识别成功: [...]
+FloatingWindow: 更新后的英雄列表: [...]
+FloatingWindow: 已显示截图提示面板
+FloatingWindow: 更新英雄名字 1: xxx
+FloatingWindow: 更新英雄名字 2: xxx
+...
+```
+
+如果你看到了上述完整日志，但英雄名字还是没有更新，那可能是 UI 层的问题。
