@@ -4,32 +4,36 @@
         "source": "/Users/lr90/.gradle/daemon/8.5/com.example.floatingscreenshot.app-main-34:/layout/activity_main.xml"
     },
     {
-        "merged": "/Users/lr90/.gradle/daemon/8.5/com.example.floatingscreenshot.app-merged_res-32:/drawable_ic_launcher_foreground.xml.flat",
-        "source": "/Users/lr90/.gradle/daemon/8.5/com.example.floatingscreenshot.app-main-34:/drawable/ic_launcher_foreground.xml"
-    },
-    {
-        "merged": "com.example.floatingscreenshot.app-merged_res-32:/layout_activity_main.xml.flat",
-        "source": "com.example.floatingscreenshot.app-main-34:/layout/activity_main.xml"
-    },
-    {
-        "merged": "/Users/lr90/.gradle/daemon/8.5/com.example.floatingscreenshot.app-merged_res-32:/drawable_ic_screenshot.xml.flat",
-        "source": "/Users/lr90/.gradle/daemon/8.5/com.example.floatingscreenshot.app-main-34:/drawable/ic_screenshot.xml"
+        "merged": "/Users/lr90/.gradle/daemon/8.5/com.example.floatingscreenshot.app-merged_res-32:/drawable_floating_button_background.xml.flat",
+        "source": "/Users/lr90/.gradle/daemon/8.5/com.example.floatingscreenshot.app-main-34:/drawable/floating_button_background.xml"
     },
     {
         "merged": "/Users/lr90/.gradle/daemon/8.5/com.example.floatingscreenshot.app-merged_res-32:/mipmap-anydpi-v26_ic_launcher.xml.flat",
         "source": "/Users/lr90/.gradle/daemon/8.5/com.example.floatingscreenshot.app-main-34:/mipmap-anydpi-v26/ic_launcher.xml"
     },
     {
-        "merged": "com.example.floatingscreenshot.app-merged_res-32:/drawable_floating_button_background.xml.flat",
-        "source": "com.example.floatingscreenshot.app-main-34:/drawable/floating_button_background.xml"
+        "merged": "/Users/lr90/.gradle/daemon/8.5/com.example.floatingscreenshot.app-merged_res-32:/drawable_screenshot_panel_item_bg.xml.flat",
+        "source": "/Users/lr90/.gradle/daemon/8.5/com.example.floatingscreenshot.app-main-34:/drawable/screenshot_panel_item_bg.xml"
     },
     {
-        "merged": "com.example.floatingscreenshot.app-merged_res-32:/layout_floating_window.xml.flat",
-        "source": "com.example.floatingscreenshot.app-main-34:/layout/floating_window.xml"
+        "merged": "/Users/lr90/.gradle/daemon/8.5/com.example.floatingscreenshot.app-merged_res-32:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "/Users/lr90/.gradle/daemon/8.5/com.example.floatingscreenshot.app-main-34:/drawable/ic_launcher_foreground.xml"
     },
     {
-        "merged": "com.example.floatingscreenshot.app-merged_res-32:/drawable_ic_screenshot_white.xml.flat",
-        "source": "com.example.floatingscreenshot.app-main-34:/drawable/ic_screenshot_white.xml"
+        "merged": "/Users/lr90/.gradle/daemon/8.5/com.example.floatingscreenshot.app-merged_res-32:/drawable_ic_screenshot.xml.flat",
+        "source": "/Users/lr90/.gradle/daemon/8.5/com.example.floatingscreenshot.app-main-34:/drawable/ic_screenshot.xml"
+    },
+    {
+        "merged": "com.example.floatingscreenshot.app-merged_res-32:/layout_screenshot_panel.xml.flat",
+        "source": "com.example.floatingscreenshot.app-main-34:/layout/screenshot_panel.xml"
+    },
+    {
+        "merged": "/Users/lr90/.gradle/daemon/8.5/com.example.floatingscreenshot.app-merged_res-32:/drawable_ic_screenshot_white.xml.flat",
+        "source": "/Users/lr90/.gradle/daemon/8.5/com.example.floatingscreenshot.app-main-34:/drawable/ic_screenshot_white.xml"
+    },
+    {
+        "merged": "/Users/lr90/.gradle/daemon/8.5/com.example.floatingscreenshot.app-merged_res-32:/layout_screenshot_panel.xml.flat",
+        "source": "/Users/lr90/.gradle/daemon/8.5/com.example.floatingscreenshot.app-main-34:/layout/screenshot_panel.xml"
     },
     {
         "merged": "/Users/lr90/.gradle/daemon/8.5/com.example.floatingscreenshot.app-merged_res-32:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",

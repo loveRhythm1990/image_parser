@@ -1,15 +1,15 @@
 [
     {
+        "merged": "/Users/lr90/.gradle/daemon/8.5/com.example.floatingscreenshot.app-mergeDebugResources-31:/layout/screenshot_panel.xml",
+        "source": "/Users/lr90/.gradle/daemon/8.5/com.example.floatingscreenshot.app-main-34:/layout/screenshot_panel.xml"
+    },
+    {
+        "merged": "com.example.floatingscreenshot.app-mergeDebugResources-31:/layout/screenshot_panel.xml",
+        "source": "com.example.floatingscreenshot.app-main-34:/layout/screenshot_panel.xml"
+    },
+    {
         "merged": "/Users/lr90/.gradle/daemon/8.5/com.example.floatingscreenshot.app-mergeDebugResources-31:/layout/activity_main.xml",
         "source": "/Users/lr90/.gradle/daemon/8.5/com.example.floatingscreenshot.app-main-34:/layout/activity_main.xml"
-    },
-    {
-        "merged": "com.example.floatingscreenshot.app-mergeDebugResources-31:/layout/floating_window.xml",
-        "source": "com.example.floatingscreenshot.app-main-34:/layout/floating_window.xml"
-    },
-    {
-        "merged": "com.example.floatingscreenshot.app-mergeDebugResources-31:/layout/activity_main.xml",
-        "source": "com.example.floatingscreenshot.app-main-34:/layout/activity_main.xml"
     },
     {
         "merged": "/Users/lr90/.gradle/daemon/8.5/com.example.floatingscreenshot.app-mergeDebugResources-31:/layout/floating_window.xml",

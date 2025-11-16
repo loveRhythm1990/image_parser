@@ -1,0 +1,7 @@
+services:
+  hero-recognition-api:
+    image: registry.cn-hangzhou.aliyuncs.com/mocloud/great-parser:1114
+    container_name: hero-recognition-api
+    ports:
+      - "8765:8000"
+    restart: unless-stopped
